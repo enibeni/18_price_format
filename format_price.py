@@ -16,12 +16,12 @@ def format_price(price):
 
 
 def get_input_argument_parser():
-    parser = argparse.ArgumentParser("Format number to price")
+    parser = argparse.ArgumentParser("Format price")
     parser.add_argument(
-        "-n",
-        "--number",
+        "-p",
+        "--price",
         required=True,
-        help="Number to format"
+        help="Price to format"
     )
     return parser
 
@@ -29,4 +29,4 @@ def get_input_argument_parser():
 if __name__ == "__main__":
     parser = get_input_argument_parser()
     args = parser.parse_args()
-    print(format_price(args.number))
+    print(format_price(args.price))
