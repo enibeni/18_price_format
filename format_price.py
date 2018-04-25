@@ -5,20 +5,16 @@ import argparse
 def format_price(price):
     precision = 2
     price = str(price)
-    if re.match(r"^\d+([.,])?\d*$", price):
-        price = price.replace(",", ".")
+    if re.match(r"^-?\d+\.?\d*$", price):
         if float(price).is_integer():
             format_string = ",.0f"
         else:
-            float_part = price.split(".")[1]
-            if len(float_part) > precision:
-                unwanted_precision = len(float_part) - precision
-                price = price[:-unwanted_precision]
-            if price[-precision:] == "00":
+            price = round(float(price), precision)
+            if str(price)[-1:] == "0":
                 format_string = ",.0f"
             else:
                 format_string = ",.2f"
-        return format(float(price), format_string).replace(",", " ")
+        return format(abs(float(price)), format_string).replace(",", " ")
 
 
 def get_input_argument_parser():

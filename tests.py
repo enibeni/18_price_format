@@ -41,7 +41,7 @@ class FormatPriceTests(unittest.TestCase):
 
     def test_should_format_number_with_too_big_precision(self):
         price = 1234.565656
-        expected = "1 234.56"
+        expected = "1 234.57"
         formatted_price = format_price(price)
         self.assertEqual(expected, formatted_price)
 
@@ -57,15 +57,9 @@ class FormatPriceTests(unittest.TestCase):
         formatted_price = format_price(price)
         self.assertEqual(expected, formatted_price)
 
-    def test_should_format_string_with_comma(self):
-        price = "1234,56"
-        expected = "1 234.56"
-        formatted_price = format_price(price)
-        self.assertEqual(expected, formatted_price)
-
-    def test_should_return_none_for_negative_number(self):
-        price = -1
-        expected = None
+    def test_should_format_negative_number(self):
+        price = -123
+        expected = "123"
         formatted_price = format_price(price)
         self.assertEqual(expected, formatted_price)
 
