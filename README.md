@@ -12,10 +12,19 @@ Example of script launch on Linux, Python 3.5:
 $ python format_price.py -p 3245.000000
 3 245
 ```
-# How to start tests
 
+Adding to your project:
+```python
+from format_price import format_price
+formatted_price = format_price(price)
+```
+
+# How to start tests
 ```bash
-python tests.py
+$ python -m unittest tests.py
+..............
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
 ```
 
 # Project Goals
