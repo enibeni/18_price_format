@@ -58,8 +58,8 @@ class FormatPriceTests(unittest.TestCase):
         self.assertEqual(expected, formatted_price)
 
     def test_should_format_negative_number(self):
-        price = -123
-        expected = "123"
+        price = -1234.99
+        expected = "-1 234.99"
         formatted_price = format_price(price)
         self.assertEqual(expected, formatted_price)
 

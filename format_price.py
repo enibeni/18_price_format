@@ -4,17 +4,13 @@ import argparse
 
 def format_price(price):
     precision = 2
-    price = str(price)
-    if re.match(r"^-?\d+\.?\d*$", price):
-        if float(price).is_integer():
+    if re.match(r"^-?\d+\.?\d*$", str(price)):
+        price = round(float(price), precision)
+        if str(price)[-1:] == "0":
             format_string = ",.0f"
         else:
-            price = round(float(price), precision)
-            if str(price)[-1:] == "0":
-                format_string = ",.0f"
-            else:
-                format_string = ",.2f"
-        return format(abs(float(price)), format_string).replace(",", " ")
+            format_string = ",.2f"
+        return format(float(price), format_string).replace(",", " ")
 
 
 def get_input_argument_parser():
